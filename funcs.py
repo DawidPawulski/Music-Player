@@ -65,8 +65,11 @@ def play_previous_song(song):
     # get from dir the next one. Waiting for playlist
 
 
-def volume():
-    pass
+def volume(val):
+    volume = float(val) / 100
+    pygame.mixer.music.set_volume(volume)
+    # Set the volume of the music playback. The value argument is between 0.0 and 1.0. When new music is loaded the volume is reset.
+
 
 def get_songs_from_dir(directory):
     import os
@@ -78,6 +81,7 @@ def get_songs_from_dir(directory):
             if '.mp3' in file:
                 songs.append(os.path.join(r, file))
     return songs
+
 
 def play_playlist(songs):
     for song in songs:
