@@ -1,10 +1,22 @@
 from tkinter import *
+import funcs
 
-class DeezyDeer():
+
+def window():
+
     window = Tk()
-app = DeezyDeer(master = window)
-app.mainloop()
+    window.title('Dizzy Dear')
+    img = Image('photo', file = 'dizzydeer.gif')
+    window.tk.call('wm', 'iconphoto', window._w, img)
 
 
-p = ttk.Progressbar(parent, orient=HORIZONTAL, length=200, mode='determinate') # progress bar -> uncklickable
-s = ttk.Scale(parent, orient=HORIZONTAL, length=200, from_=1.0, to=100.0) # scale for volume
+    #window.iconbitmap(r'/home/jck/Documents/python/dizzydeer/DizzyDeer/dizzydeer.ico')
+
+
+    button_play = Button(window, text = 'PLAY', command = lambda: funcs.play_playlist(funcs.get_songs_from_dir('/home/jck/Documents/python/dizzydeer/DizzyDeer/songs/')))
+    button_play.pack()
+    
+
+
+    while True: # placeholder
+        mainloop()
