@@ -54,7 +54,17 @@ def play_previous_song(song):
 def volume():
     pass
 
+def get_songs_from_dir(directory):
+    import os
+    songs = []
+    # r=root, d=directories, f = files
+    for r, d, f in os.walk(directory):
+        for file in f:
+            if '.mp3' in file:
+                songs.append(os.path.join(r, file))
+    return songs
 
-play_song("songs/bensound-epic.mp3")
+print(get_songs_from_dir('/home/jck//Documents/python/dizzydeer/DizzyDeer/songs'))
+play_song(get_songs_from_dir('/home/jck//Documents/python/dizzydeer/DizzyDeer/songs')[0])
 time.sleep(1)
 stop_song()
