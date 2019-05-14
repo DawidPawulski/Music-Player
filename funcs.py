@@ -1,5 +1,4 @@
 import pygame
-import time
 
 
 def init_and_load_song(song):
@@ -15,23 +14,19 @@ def play_song(song):
         pygame.time.Clock().tick(10)
 
 
-def stop_song(song):
-    pygame.mixer.init()
+def stop_song():
     pygame.mixer.music.stop()
 
 
-def pause_song(song):
-    init_and_load_song(song)
+def pause_song():
     pygame.mixer.music.pause()
 
 
-def unpause_song(song):
-    init_and_load_song(song)
+def unpause_song():
     pygame.mixer.music.unpause()
 
 
-def rewind_song(song):
-    init_and_load_song(song)
+def rewind_song():
     pygame.mixer.music.rewind()
 
 
@@ -44,11 +39,13 @@ def repeat_song(song):
 
 
 def play_next_song(song):
-    pass
+    stop_song()
+    # get from dir the next one. Waiting for playlist
 
 
 def play_previous_song(song):
-    pass
+    stop_song()
+    # get from dir the next one. Waiting for playlist
 
 
 def volume():
@@ -68,3 +65,4 @@ print(get_songs_from_dir('/home/jck//Documents/python/dizzydeer/DizzyDeer/songs'
 play_song(get_songs_from_dir('/home/jck//Documents/python/dizzydeer/DizzyDeer/songs')[0])
 time.sleep(1)
 stop_song()
+
