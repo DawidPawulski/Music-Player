@@ -1,5 +1,7 @@
+import pygame
 from mutagen.mp3 import MP3
 import time
+
 
 # First you should install mutagen  / sudo pip3 install mutagen /
 def print_time(song):
@@ -14,8 +16,6 @@ def sum_of_song_length(list_of_songs):  # count sum length for all songs
     sum_of_song_length = sum([round(MP3(song).info.length) for song in list_of_songs])  # taking songs length sum
     sum_of_song_length_in_min_sec = sum_of_song_length // 60 + (sum_of_song_length % 60 / 100)  # convert sec into minutes and seconds
     return sum_of_song_length_in_min_sec
-
-import pygame
 
 
 def init_and_load_song(song):
@@ -55,16 +55,6 @@ def repeat_song(song):
         pygame.time.Clock().tick(10)
 
 
-def play_next_song(song):
-    stop_song()
-    # get from dir the next one. Waiting for playlist
-
-
-def play_previous_song(song):
-    stop_song()
-    # get from dir the next one. Waiting for playlist
-
-
 def volume(val):
     volume = float(val) / 100
     pygame.mixer.music.set_volume(volume)
@@ -88,7 +78,7 @@ def play_playlist(songs):
         play_song(song)
 
 
-#print(get_songs_from_dir('/home/jck/Documents/python/dizzydeer/DizzyDeer/songs/'))
-#play_song(get_songs_from_dir('/home/jck//Documents/python/dizzydeer/DizzyDeer/songs')[0])
+# print(get_songs_from_dir('/home/jck/Documents/python/dizzydeer/DizzyDeer/songs/'))
+# play_song(get_songs_from_dir('/home/jck//Documents/python/dizzydeer/DizzyDeer/songs')[0])
 
 play_playlist(get_songs_from_dir('/home/jck/Documents/python/dizzydeer/DizzyDeer/songs/'))
