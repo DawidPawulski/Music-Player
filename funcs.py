@@ -90,14 +90,10 @@ def play_playlist(songs):
 def shuffle(songs):
     import random
     random.shuffle(songs)
-    print(songs)
+    #print(songs)
     return songs
 
 
 # print(get_songs_from_dir('/home/jck/Documents/python/dizzydeer/DizzyDeer/songs/'))
 # play_song(get_songs_from_dir('/home/jck//Documents/python/dizzydeer/DizzyDeer/songs')[0])
 
-
-play_playlist(shuffle(get_songs_from_dir('/home/jck/Documents/python/dizzydeer/DizzyDeer/songs/')))
-
-play_playlist(get_songs_from_dir('/home/jck/Documents/python/dizzydeer/DizzyDeer/songs/'))
