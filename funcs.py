@@ -97,10 +97,7 @@ def shuffle(songs):
 # print(get_songs_from_dir('/home/jck/Documents/python/dizzydeer/DizzyDeer/songs/'))
 # play_song(get_songs_from_dir('/home/jck//Documents/python/dizzydeer/DizzyDeer/songs')[0])
 
-<<<<<<< HEAD
 
 play_playlist(shuffle(get_songs_from_dir('/home/jck/Documents/python/dizzydeer/DizzyDeer/songs/')))
 
-=======
 play_playlist(get_songs_from_dir('/home/jck/Documents/python/dizzydeer/DizzyDeer/songs/'))
->>>>>>> 0b4be9dd9ba01ff6f071ea401e531f57ebd4827f
