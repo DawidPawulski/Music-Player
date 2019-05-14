@@ -1,4 +1,21 @@
 import pygame
+from mutagen.mp3 import MP3
+import time
+
+
+# First you should install mutagen  / sudo pip3 install mutagen /
+def print_time(song):
+    song_length = round(MP3(song).info.length)
+    for i in range(song_length, 0, -1):
+        time.sleep(1)
+        current_time = i // 60 + (i % 60 / 100)
+        print("{0:.2f}".format(current_time))
+
+
+def sum_of_song_length(list_of_songs):  # count sum length for all songs
+    sum_of_song_length = sum([round(MP3(song).info.length) for song in list_of_songs])  # taking songs length sum
+    sum_of_song_length_in_min_sec = sum_of_song_length // 60 + (sum_of_song_length % 60 / 100)  # convert sec into minutes and seconds
+    return sum_of_song_length_in_min_sec
 
 
 def init_and_load_song(song):
@@ -38,18 +55,11 @@ def repeat_song(song):
         pygame.time.Clock().tick(10)
 
 
-def play_next_song(song):
-    stop_song()
-    # get from dir the next one. Waiting for playlist
+def volume(val):
+    volume = float(val) / 100
+    pygame.mixer.music.set_volume(volume)
+    # Set the volume of the music playback. The value argument is between 0.0 and 1.0. When new music is loaded the volume is reset.
 
-
-def play_previous_song(song):
-    stop_song()
-    # get from dir the next one. Waiting for playlist
-
-
-def volume():
-    pass
 
 def get_songs_from_dir(directory):
     import os
@@ -63,6 +73,7 @@ def get_songs_from_dir(directory):
                 if '.mp3' in file:
                     songs.append(os.path.join(r, file))
     return songs
+
 
 def play_playlist(songs):
     for i in range(len(songs)):
@@ -83,9 +94,13 @@ def shuffle(songs):
     return songs
 
 
-#print(get_songs_from_dir('/home/jck/Documents/python/dizzydeer/DizzyDeer/songs/'))
-#play_song(get_songs_from_dir('/home/jck//Documents/python/dizzydeer/DizzyDeer/songs')[0])
+# print(get_songs_from_dir('/home/jck/Documents/python/dizzydeer/DizzyDeer/songs/'))
+# play_song(get_songs_from_dir('/home/jck//Documents/python/dizzydeer/DizzyDeer/songs')[0])
 
+<<<<<<< HEAD
 
 play_playlist(shuffle(get_songs_from_dir('/home/jck/Documents/python/dizzydeer/DizzyDeer/songs/')))
 
+=======
+play_playlist(get_songs_from_dir('/home/jck/Documents/python/dizzydeer/DizzyDeer/songs/'))
+>>>>>>> 0b4be9dd9ba01ff6f071ea401e531f57ebd4827f
