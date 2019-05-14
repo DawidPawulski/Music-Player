@@ -54,6 +54,7 @@ def volume():
 def get_songs_from_dir(directory):
     import os
     songs = []
+
     # r=root, d=directories, f = files
     for r, d, f in os.walk(directory):
         for file in f:
@@ -61,8 +62,12 @@ def get_songs_from_dir(directory):
                 songs.append(os.path.join(r, file))
     return songs
 
-print(get_songs_from_dir('/home/jck//Documents/python/dizzydeer/DizzyDeer/songs'))
-play_song(get_songs_from_dir('/home/jck//Documents/python/dizzydeer/DizzyDeer/songs')[0])
-time.sleep(1)
-stop_song()
+def play_playlist(songs):
+    for song in songs:
+        play_song(song)
 
+
+#print(get_songs_from_dir('/home/jck/Documents/python/dizzydeer/DizzyDeer/songs/'))
+#play_song(get_songs_from_dir('/home/jck//Documents/python/dizzydeer/DizzyDeer/songs')[0])
+
+play_playlist(get_songs_from_dir('/home/jck/Documents/python/dizzydeer/DizzyDeer/songs/'))
