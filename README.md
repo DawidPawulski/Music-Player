@@ -5,3 +5,6 @@ requirements:
     - python3
     - pygame
     - tkinter
+    - mutagen
+    - pynput
+    
