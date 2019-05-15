@@ -5,35 +5,49 @@ import funcs
 def pick_dir():
     directory = filedialog.askdirectory()
     return directory
+
 def window():
 
-    window = Tk()
-    window.title('Dizzy Dear')
-    img = Image('photo', file = 'dizzydeer.gif')
-    window.tk.call('wm', 'iconphoto', window._w, img)
+	window = Tk()
+	window.title('Dizzy Dear')
+	window.geometry('450x100')
+	img = Image('photo', file = 'dizzydeer.gif')
+	window.tk.call('wm', 'iconphoto', window._w, img)
+
+	topFrame=Frame(window)
+	topFrame.pack()
 
 
     #window.iconbitmap(r'/home/jck/Documents/python/dizzydeer/DizzyDeer/dizzydeer.ico')
 
+    #label_smth = Label(window, text = "  ")    
 
     # filedialog.askdirectory()
     
     #window.file =  filedialog.askopenfilename(initialdir = "/",title = "Select file",filetypes = (("mp3 files","*.mp3"),("all files","*.*")))
-    directory = pick_dir()
+	directory = pick_dir()
 
 
-    button_play = Button(window, text = 'PLAY', command = lambda: funcs.play_playlist(funcs.get_songs_from_dir(directory)))
-    button_play.pack()
-    button_stop = Button(window, text = 'STOP', command = lambda: funcs.stop_song())
-    button_stop.pack()
-    button_pick = Button(window, text = 'Pick Directory', command = lambda: pick_dir())
-    button_pick.pack()
+	bottomFrame = Frame(window)
+	bottomFrame.pack(side = BOTTOM)
+
+
+	button_previous_song = Button(topFrame, text = '|<<',activebackground = "purple")  #, command = lambda: pick_dir())
+	button_previous_song.pack(side=LEFT)
+	button_play = Button(topFrame, text = '| >',activebackground = "purple", command = lambda: funcs.play_playlist(funcs.get_songs_from_dir(directory)))
+	button_play.pack(side=LEFT)
+	button_stop = Button(topFrame, text = '| |',activebackground = "purple", command = lambda: funcs.stop_song())
+	button_stop.pack(side=LEFT)
+	button_next_song = Button(topFrame, text = '>>|',activebackground = "purple")  #, command = lambda: pick_dir())
+	button_next_song.pack(side=LEFT)
+	button_pick = Button(window, text = 'PD',activebackground = "purple", command = lambda: pick_dir())
+	button_pick.pack(side=RIGHT,fill = Y)
+	
 
 
 
 
 
 
-
-    while True: # placeholder
-        mainloop()
+	while True: # placeholder
+		mainloop()
