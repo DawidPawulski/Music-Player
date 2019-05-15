@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import filedialog
+from tkinter import ttk
 import funcs
 
 def pick_dir():
@@ -32,6 +33,14 @@ def window():
 	bottomFrame.pack(side = BOTTOM)
 
 
+
+
+	pb = ttk.Progressbar(window, orient="horizontal", length=400, mode="determinate")
+	pb.pack()
+	
+
+
+
 	button_previous_song = Button(topFrame, text = '|<<',activebackground = "purple")  #, command = lambda: pick_dir())
 	button_previous_song.pack(side=LEFT)
 	button_play = Button(topFrame, text = '| >',activebackground = "purple", command = lambda: funcs.play_playlist(funcs.get_songs_from_dir(directory)))
@@ -42,6 +51,7 @@ def window():
 	button_next_song.pack(side=LEFT)
 	button_pick = Button(window, text = 'PD',activebackground = "purple", command = lambda: pick_dir())
 	button_pick.pack(side=RIGHT,fill = Y)
+	pb.start()
 	
 
 
