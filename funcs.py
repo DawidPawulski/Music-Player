@@ -2,6 +2,8 @@ import pygame
 from mutagen.mp3 import MP3
 import time
 
+
+NEXT = pygame.USEREVENT + 1
 paused = False
 # First you should install mutagen  / sudo pip3 install mutagen /
 def print_time(song):	
@@ -25,14 +27,27 @@ def init_and_load_song(song):
 
 def play_song(songs):
     global paused
+    current_track = 0
+    tracks_number = len(songs)
     if paused:
         unpause_song()
     else:   
+        pygame.init()
         pygame.mixer.init()
-        pygame.mixer_music.load(songs[0])
-        for i in range(1, len(songs)):
-                pygame.mixer_music.queue(songs[i])
-        pygame.mixer.music.play()
+        pygame.mixer_music.load(songs[current_track])
+        pygame.mixer_music.play()
+        pygame.mixer_music.set_endevent(NEXT)
+        for i in range(tracks_number):
+            #for event in pygame.event.get():
+                #if event.type == pygame.QUIT:
+                    #running = False
+
+                #if event.type == NEXT:
+
+                    # get next track (modulo number of tracks)
+ 
+            pygame.mixer.music.load(songs[i])
+            pygame.mixer.music.play()
 
 
 
