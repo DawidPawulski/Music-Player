@@ -47,7 +47,7 @@ def repeat_song(song):
     while pygame.mixer.music.get_busy():
         pygame.time.Clock().tick(10)
 
-def volume(val):
+def set_volume(val):
     volume = float(val) / 100
     pygame.mixer.music.set_volume(volume)
     # Set the volume of the music playback. The value argument is between 0.0 and 1.0. When new music is loaded the volume is reset.
@@ -72,8 +72,9 @@ def play_playlist(songs, song_index):
 
 def next_song(songs):
     global song_index # set index for a playlist
-    song_index += 1
-    play_playlist(songs, song_index)
+    if song_index < len(songs):
+        song_index += 1
+        play_playlist(songs, song_index)
 
 def previous_song(songs):
     global song_index # set index for a playlist
