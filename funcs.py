@@ -81,6 +81,17 @@ def previous_song(songs):
         song_index -= 1
         play_playlist(songs, song_index)
 
+
+def display_playlist(songs):
+    result = ""
+    for song in songs:
+        song_title = song.split("/")
+        for song in song_title[-1:]:
+            song = song.strip(".mp3")
+            result += "{}\n".format(song)
+    return result
+
+
 def shuffle(songs):
     import random
     random.shuffle(songs)
