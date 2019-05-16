@@ -3,8 +3,10 @@ from mutagen.mp3 import MP3
 import time
 
 
+NEXT = pygame.USEREVENT + 1
+paused = False
 # First you should install mutagen  / sudo pip3 install mutagen /
-def print_time(song):
+def print_time(song):	
     song_length = round(MP3(song).info.length)
     for i in range(song_length, 0, -1):
         time.sleep(1)
@@ -12,7 +14,7 @@ def print_time(song):
         print("{0:.2f}".format(current_time))
 
 
-def sum_of_song_length(list_of_songs):  # count sum length for all songs
+def sum_of_song_length(list_of_songs): # count sum length for all songs  
     sum_of_song_length = sum([round(MP3(song).info.length) for song in list_of_songs])  # taking songs length sum
     sum_of_song_length_in_min_sec = sum_of_song_length // 60 + (sum_of_song_length % 60 / 100)  # convert sec into minutes and seconds
     return sum_of_song_length_in_min_sec
@@ -23,12 +25,30 @@ def init_and_load_song(song):
     pygame.mixer.music.load(song)
 
 
-def play_song(song):
-    PLAY_SONG_ONCE = 0
-    init_and_load_song(song)
-    pygame.mixer.music.play(PLAY_SONG_ONCE)
-    while pygame.mixer.music.get_busy():
-        pygame.time.Clock().tick(10)
+def play_song(songs):
+    global paused
+    current_track = 0
+    tracks_number = len(songs)
+    if paused:
+        unpause_song()
+    else:   
+        pygame.init()
+        pygame.mixer.init()
+        pygame.mixer_music.load(songs[current_track])
+        pygame.mixer_music.play()
+        pygame.mixer_music.set_endevent(NEXT)
+        for i in range(tracks_number):
+            #for event in pygame.event.get():
+                #if event.type == pygame.QUIT:
+                    #running = False
+
+                #if event.type == NEXT:
+
+                    # get next track (modulo number of tracks)
+ 
+            pygame.mixer.music.load(songs[i])
+            pygame.mixer.music.play()
+
 
 
 def stop_song():
@@ -36,11 +56,15 @@ def stop_song():
 
 
 def pause_song():
+    global paused
     pygame.mixer.music.pause()
+    paused = True
 
 
 def unpause_song():
+    global paused
     pygame.mixer.music.unpause()
+    paused = False
 
 
 def rewind_song():
