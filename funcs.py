@@ -1,10 +1,9 @@
 import pygame
-from mutagen.mp3 import MP3
-import time
-
 
 # First you should install mutagen  / sudo pip3 install mutagen /
 def print_time(song):
+	from mutagen.mp3 import MP3
+	import time
     song_length = round(MP3(song).info.length)
     for i in range(song_length, 0, -1):
         time.sleep(1)
@@ -12,7 +11,9 @@ def print_time(song):
         print("{0:.2f}".format(current_time))
 
 
-def sum_of_song_length(list_of_songs):  # count sum length for all songs
+def sum_of_song_length(list_of_songs): # count sum length for all songs
+	from mutagen.mp3 import MP3
+	import time  
     sum_of_song_length = sum([round(MP3(song).info.length) for song in list_of_songs])  # taking songs length sum
     sum_of_song_length_in_min_sec = sum_of_song_length // 60 + (sum_of_song_length % 60 / 100)  # convert sec into minutes and seconds
     return sum_of_song_length_in_min_sec
