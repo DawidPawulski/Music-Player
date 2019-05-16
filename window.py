@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import filedialog
 from tkinter import ttk
 import funcs
+import pygame
 
 def pick_dir():
     directory = filedialog.askdirectory()
@@ -43,9 +44,9 @@ def window():
 
 	button_previous_song = Button(topFrame, text = '|<<',activebackground = "purple")  #, command = lambda: pick_dir())
 	button_previous_song.pack(side=LEFT)
-	button_play = Button(topFrame, text = '| >',activebackground = "purple", command = lambda: funcs.play_playlist(funcs.get_songs_from_dir(directory)))
+	button_play = Button(topFrame, text = '| >',activebackground = "purple", command = lambda: funcs.play_song(funcs.get_songs_from_dir(directory)))
 	button_play.pack(side=LEFT)
-	button_stop = Button(topFrame, text = '| |',activebackground = "purple", command = lambda: funcs.stop_song())
+	button_stop = Button(topFrame, text = '| |',activebackground = "purple", command = lambda: funcs.pause_song())
 	button_stop.pack(side=LEFT)
 	button_next_song = Button(topFrame, text = '>>|',activebackground = "purple")  #, command = lambda: pick_dir())
 	button_next_song.pack(side=LEFT)
