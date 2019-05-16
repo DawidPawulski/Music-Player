@@ -15,7 +15,7 @@ def window():
 	window.geometry('450x100')
 	img = Image('photo', file = 'dizzydeer.gif')
 	window.tk.call('wm', 'iconphoto', window._w, img)
-
+	song_index = 0
 	topFrame=Frame(window)
 	topFrame.pack()
 
@@ -42,13 +42,13 @@ def window():
 
 
 
-	button_previous_song = Button(topFrame, text = '|<<',activebackground = "purple")  #, command = lambda: pick_dir())
+	button_previous_song = Button(topFrame, text = '|<<',activebackground = "purple", command = lambda: funcs.previous_song(funcs.get_songs_from_dir(directory)))
 	button_previous_song.pack(side=LEFT)
-	button_play = Button(topFrame, text = '| >',activebackground = "purple", command = lambda: funcs.play_song(funcs.get_songs_from_dir(directory)))
+	button_play = Button(topFrame, text = '| >',activebackground = "purple", command = lambda: funcs.play_playlist(funcs.get_songs_from_dir(directory), song_index))
 	button_play.pack(side=LEFT)
 	button_stop = Button(topFrame, text = '| |',activebackground = "purple", command = lambda: funcs.pause_song())
 	button_stop.pack(side=LEFT)
-	button_next_song = Button(topFrame, text = '>>|',activebackground = "purple")  #, command = lambda: pick_dir())
+	button_next_song = Button(topFrame, text = '>>|',activebackground = "purple", command = lambda: funcs.next_song(funcs.get_songs_from_dir(directory)))
 	button_next_song.pack(side=LEFT)
 	button_pick = Button(window, text = 'PD',activebackground = "purple", command = lambda: pick_dir())
 	button_pick.pack(side=RIGHT,fill = Y)
