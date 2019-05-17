@@ -11,8 +11,8 @@ def pick_dir():
 
 def window():
     window = tkinter.Tk()
-    window.title('Dizzy Dear')
-    window.geometry('450x200')
+    window.title('Dizzy Deer')
+    window.geometry('450x300')
     img = tkinter.Image('photo', file='dizzydeer.gif')
     window.tk.call('wm', 'iconphoto', window._w, img)
     song_index = 0
