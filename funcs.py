@@ -23,7 +23,7 @@ def sum_of_song_length(list_of_songs):  # count sum length for all songs
 
 
 def play_song(song):
-    global paused
+    # global paused
     if paused:
         unpause_song()
     else:
